@@ -8,23 +8,27 @@ function getUserInput() {
 
 function sum() {
   const userInput = getUserInput();
+  const prevNumber = finalResult;
   finalResult += userInput;
-  outputResult(finalResult, "");
+  outputResult(finalResult, `${prevNumber} + ${userInput}`);
 }
 function subtract() {
   const userInput = getUserInput();
+  const prevNumber = finalResult;
   finalResult -= userInput;
-  outputResult(finalResult, "");
+  outputResult(finalResult, `${prevNumber} - ${userInput}`);
 }
 function multiplay() {
   const userInput = getUserInput();
+  const prevNumber = finalResult;
   finalResult *= userInput;
-  outputResult(finalResult, "");
+  outputResult(finalResult, `${prevNumber} * ${userInput}`);
 }
 function divide() {
   const userInput = getUserInput();
+  const prevNumber = finalResult;
   finalResult /= userInput;
-  outputResult(finalResult, "");
+  outputResult(finalResult, `${prevNumber} / ${userInput}`);
 }
 
 addBtn.addEventListener("click", sum);
