@@ -1,6 +1,8 @@
 const backdrop = document.getElementById("backdrop");
 const addMovieModal = document.getElementById("add-modal");
 
+const movies = [];
+
 // inputs
 // Movie Modal Inputs
 const addMovieModalUserInputs = addMovieModal.querySelectorAll("input");
@@ -12,7 +14,14 @@ const cancelAddMovieModal = addMovieModal.querySelector(".btn--passive");
 const confirmAddMovieModal = cancelAddMovieModal.nextElementSibling;
 
 // expression functions
+const clearInputUser = () => {
+  addMovieModalUserInputs.forEach((userInput) => {
+    userInput.value = "";
+  });
+};
+
 const toggleModal = () => {
+  clearInputUser();
   addMovieModal.classList.toggle("visible");
   backdrop.classList.toggle("visible");
 };
@@ -31,6 +40,16 @@ const addMovieHandler = () => {
   if (!ratingString || ratingNumber < 1 || ratingNumber > 5) {
     alert("Raing must be between 1 and 5");
   }
+
+  const newMovie = {
+    title,
+    imageUrl,
+    rating: ratingNumber,
+  };
+
+  movies.push(newMovie);
+  console.log(movies);
+  toggleModal();
 };
 
 // listeners
