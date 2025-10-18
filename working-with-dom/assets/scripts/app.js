@@ -1,5 +1,6 @@
 const backdrop = document.getElementById("backdrop");
 const addMovieModal = document.getElementById("add-modal");
+const section = document.getElementById("entry-text");
 
 const movies = [];
 
@@ -18,6 +19,28 @@ const clearInputUser = () => {
   addMovieModalUserInputs.forEach((userInput) => {
     userInput.value = "";
   });
+};
+
+const updateUI = () => {
+  if (movies.length === 0) section.style.display = "block";
+  else section.style.display = "none";
+};
+
+const renderNewMovie = (title, imageUrl, rating) => {
+  const newMovieElement = document.createElement("li");
+  newMovieElement.classList.add("movie-element");
+  newMovieElement.innerHTML = `
+    <div class="movie-element__image">
+      <img src="${imageUrl}" alt="${title}"/>
+    </div>
+    <div class="movie-element__info">
+      <h2>${title}</h2>
+      <p>${rating}/5 stars</p>
+    </div>
+  `;
+
+  const movieListUL = document.getElementById("movie-list");
+  movieListUL.appendChild(newMovieElement);
 };
 
 const toggleModal = () => {
@@ -48,7 +71,8 @@ const addMovieHandler = () => {
   };
 
   movies.push(newMovie);
-  console.log(movies);
+  updateUI();
+  renderNewMovie(title, imageUrl, ratingNumber);
   toggleModal();
 };
 
