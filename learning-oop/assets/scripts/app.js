@@ -1,13 +1,25 @@
+class Product {
+  title = "DEFAULT";
+  imageUrl;
+  price;
+  description;
+
+  constructor(title, imageUrl, price, description) {
+    this.title = title;
+    this.imageUrl = imageUrl;
+    this.price = price;
+    this.description = description;
+  }
+}
 // create object about productList
 const productList = {
   products: [
-    {
-      title: "IPHONE 17 Pro Max",
-      imageUrl:
-        "https://api2.zoomit.ir/media/68c0797d2e4b43cec3e90539?w=1920&q=80",
-      price: 1599.99,
-      description: "Some description about iphone 17 pro max",
-    },
+    new Product(
+      "IPHONE 17 Pro Max",
+      "https://api2.zoomit.ir/media/68c0797d2e4b43cec3e90539?w=1920&q=80",
+      1599.99,
+      "Some description about iphone 17 pro max",
+    ),
   ],
   // make method for render
   render() {
